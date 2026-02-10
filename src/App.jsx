@@ -5,14 +5,18 @@ import Blog from './pages/Blog';
 import Dashboard from './pages/admin/Dashboard';
 import AddBlog from './pages/admin/AddBlog';
 import ListBlog from './pages/admin/ListBlog';
-import Comment from './pages/admin/Comment';
+import Comments from './pages/admin/Comments';
 import Layout from './pages/admin/Layout';
 import Login from './components/admin/Login';
-import 'quill/dist/quill.snow.css'
+import 'quill/dist/quill.snow.css';
+import { Toaster } from 'react-hot-toast';
+import { useAppContext } from '../src/context/AppContext.jsx';
 
 const App = () => {
+	const { token } = useAppContext();
 	return (
 		<div>
+			<Toaster />
 			<Routes>
 				<Route
 					path="/"
@@ -24,7 +28,7 @@ const App = () => {
 				/>
 				<Route
 					path="/admin"
-					element={true ? <Layout />: <Login/>}
+					element={token ? <Layout /> : <Login />}
 				>
 					<Route
 						index
@@ -36,11 +40,11 @@ const App = () => {
 					/>
 					<Route
 						path="listBlog"
-						element={<ListBlog/>}
+						element={<ListBlog />}
 					/>
-          <Route
+					<Route
 						path="comments"
-						element={<Comment/>}
+						element={<Comments />}
 					/>
 				</Route>
 			</Routes>
