@@ -5,6 +5,8 @@ import BlogCard from './BlogCard';
 import { useAppContext } from '../context/AppContext';
 
 const BlogList = () => {
+
+	
 	const [menu, setMenu] = useState('All');
 	const { blogs, input } = useAppContext();
 	const filteredBlogs = () => {
