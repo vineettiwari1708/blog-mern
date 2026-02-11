@@ -65,8 +65,8 @@ const Comments = () => {
 					<tbody>
 						{comments
 							.filter((comment) => {
-								if (filter === 'Approved') {return comment.isApproved === true;}
-								else return comment.isApproved === false;
+								if (filter === 'Approved') return comment.isApproved === true;
+								return comment.isApproved === false;
 							})
 							.map((comment, index) => (
 								<CommentTableItem
